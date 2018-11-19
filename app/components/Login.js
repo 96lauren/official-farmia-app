@@ -8,21 +8,16 @@ import {
   TextInput,
   StyleSheet, // CSS-like styles
   Text, // Renders text
-  View,
-  Modal,
-  ActivityIndicator
+  View // Container component
 } from "react-native";
 
 import { StackNavigator } from "react-navigation";
-import Loader from "./Loader";
-import renderIf from "./util/renderIf";
 //import Spinner from "react-native-loading-spinner-overlay";
 
 export default class Login extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
       email: "",
       password: ""
     };
@@ -30,66 +25,34 @@ export default class Login extends Component {
   static navigationOptions = {
     headerStyle: {
       backgroundColor: "#16a085",
-      elevation: null
+      elevation: null,
     },
     headerTitleStyle: {
-      textAlign: "left",
-      alignSelf: "center",
-      flex: 1
+      color: '#fff',
     },
-    headerTintColor: "#fff"
+    headerTitleStyle: {
+      textAlign:'left', 
+      alignSelf:'center',
+      flex:1
+    },
+    headerTintColor: '#fff',
   };
-
-  onLoginPress = () => {
+  async onLoginPress() {
     const { email, password } = this.state;
-
-    this.setState({
-      loading: true
-    });
-
-    fetch("https://68c0ff0a.ngrok.io/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password
-      })
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        // If server response message same as Data Matched
-        if (responseJson.statusCode === 200) {
-
-          this.setState({
-            loading: false,
-            email: "false",
-            password: "password"
-          });
-          //Then open Profile activity and send user email to profile activity.
-          this.props.navigation.navigate("HomeScreen");
-        } else {
-          Alert.alert(responseJson.message);
-        }
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
-        console.error(error);
-      });
-  };
-
+    console.log(email);
+    console.log(password);
+    await AsyncStorage.setItem("email", email);
+    await AsyncStorage.setItem("password", password);
+    this.props.navigation.navigate("HomeScreen");
+  }
   render() {
     return (
       <View style={styles.container}>
         <View behavior="padding" style={styles.container}>
           <View style={styles.logoContainer}>
-            <Loader loading={this.state.loading} />
             <Image style={styles.logo} source={require("./flogo2.png")} />
             <Text style={styles.subtext}>FARMIA</Text>
           </View>
-
           <KeyboardAvoidingView style={styles.keyboard}>
             <View style={styles.window}>
               <TextInput
@@ -134,9 +97,17 @@ export default class Login extends Component {
             title="Sign up"
           >
             Sign up
-          </Text>  
+          </Text>
         </TouchableOpacity>
-        
+        <TouchableOpacity style={styles.button}>
+          <Text
+            style={styles.buttonText}
+            onPress={() => this.props.navigation.navigate("ForgetPassword")}
+            title="Forget Password"
+          >
+            Forget Password
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -145,7 +116,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff"
+    backgroundColor: "rgb(255,255,255)"
   },
   logoContainer: {
     alignItems: "center",
@@ -155,12 +126,11 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 100,
-    height: 50,
-    marginTop:20
+    height: 70
   },
   subtext: {
     color: "#390C0C",
-    width: "100%",
+    width:'100%',
     textAlign: "center",
     fontSize: 35,
     fontWeight: "bold",
@@ -173,8 +143,9 @@ const styles = StyleSheet.create({
     alignSelf: "stretch"
   },
   buttonContainer: {
-    backgroundColor: "rgba(0,0,0,0.2)",
-    paddingVertical: 15
+    backgroundColor: "#FB5A03",
+    paddingVertical: 15,
+    borderRadius:20
   },
   buttonText: {
     textAlign: "center",
@@ -185,19 +156,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#FB5A03",
     paddingVertical: 15,
     padding: 20,
-    marginBottom: 20,
+    marginBottom: 10,
     marginTop: 5,
-    marginRight: 20,
-    marginLeft: 20,
-    borderRadius:8
+    marginRight:30,
+    marginLeft:30,
+    borderRadius:20
   },
   input: {
     height: 40,
     marginBottom: 10,
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.3)",
     color: "#fff",
     paddingHorizontal: 10,
-    borderRadius:8
+    borderRadius:20
   },
   window: {
     marginBottom: 15

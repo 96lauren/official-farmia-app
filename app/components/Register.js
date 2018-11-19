@@ -8,25 +8,28 @@ import {
   TouchableHighlight,
   Image,
   KeyboardAvoidingView,
-  AsyncStorage
+  AsyncStorage,
+  Picker
 } from "react-native";
 
 import { StackNavigator } from "react-navigation";
 
 export default class Register extends Component {
-  constructor(props) {
+  constructor(props) { 
     super(props);
     this.state = {
       email: "",
       name: "",
+      phone: "",
+      service: "",
       password: "",
       password_confirmation: ""
     };
   }
 
-  static navigationOptions = {
+static navigationOptions = {
     headerStyle: {
-      backgroundColor: "#16a085",
+      backgroundColor: "#36485f",
       elevation: null,
     },
     headerTitleStyle: {
@@ -40,29 +43,34 @@ export default class Register extends Component {
   };
 
   async onRegisterPress() {
-    const { email, password, name } = this.state;
+    const { email, password, name, service, phone } = this.state;
     console.log(email);
     console.log(name);
+    console.log(phone);
+    console.log(service);
     console.log(password);
     await AsyncStorage.setItem("email", email);
     await AsyncStorage.setItem("name", name);
+    await AsyncStorage.setItem("phone", phone);
+    await AsyncStorage.setItem("service", service);
     await AsyncStorage.setItem("password", password);
-    this.props.navigation.navigate("Boiler");
+    this.props.navigation.navigate("HomeScreen");
   }
-
   render() {
     return (
       <View behavior="padding" style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require("./flogo2.png")} />
-          <Text style={styles.subtext}>Create Account</Text>
-        </View>
+
+          <View style={styles.logoContainer}>
+            <Image style={styles.logo} source={require("./flogo2.png")} />
+            <Text style={styles.subtext}>FARMIA</Text>
+          </View>
+        
         <KeyboardAvoidingView>
           <TextInput
             value={this.state.name}
             onChangeText={name => this.setState({ name })}
             style={styles.input}
-            placeholder="Name"
+            placeholder="User name"
             placeholderTextColor="rgba(255,255,255,0.7)"
             returnKeyType="next"
             onSubmitEditing={() => this.emailInput.focus()}
@@ -75,12 +83,30 @@ export default class Register extends Component {
             placeholderTextColor="rgba(255,255,255,0.7)"
             returnKeyType="next"
             ref={input => (this.emailInput = input)}
-            onSubmitEditing={() => this.passwordCInput.focus()}
+            onSubmitEditing={() => this.phoneInput.focus()}
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
             placeholder="Email"
           />
+
+          <TextInput
+            value={this.state.phone}
+            keyboardType = 'numeric'
+            onChangeText={phone => this.setState({ phone })}
+            ref={input => (this.phoneInput = input)}
+            value={this.state.phone}
+            maxLength={10}
+            style={styles.input}
+            placeholder="Phone number"
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            returnKeyType="next"
+            onSubmitEditing={() => this.serviceInput.focus()}
+          />
+
+          
+          
+
           <TextInput
             value={this.state.password}
             onChangeText={password => this.setState({ password })}
@@ -111,7 +137,7 @@ export default class Register extends Component {
           onPress={this.onRegisterPress.bind(this)}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Register</Text>
+          <Text style={styles.buttonText}>REGISTER </Text>
         </TouchableHighlight>
       </View>
     );
@@ -123,7 +149,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#ffffff",
     padding: 20,
-    paddingTop: 100
+    
   },
   logoContainer: {
     alignItems: "center",
@@ -137,20 +163,21 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    width: 350,
     marginBottom: 10,
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.3)",
     color: "#fff",
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    borderRadius:20
   },
   button: {
     height: 50,
-    backgroundColor: "rgba(255,255,255,0.2)",
+    backgroundColor: "#FB5A03",
     alignSelf: "stretch",
     marginTop: 10,
     justifyContent: "center",
     paddingVertical: 15,
-    marginBottom: 10
+    marginBottom: 10,
+    borderRadius:20
   },
   buttonText: {
     flex: 1,
@@ -162,7 +189,7 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   subtext: {
-    color: "#ffffff",
+    color: "#390C0C",
     width:'100%',
     textAlign: "center",
     fontSize: 35,
