@@ -29,7 +29,7 @@ export default class Register extends Component {
 
 static navigationOptions = {
     headerStyle: {
-      backgroundColor: "#36485f",
+      backgroundColor: "#ffffff",
       elevation: null,
     },
     headerTitleStyle: {
@@ -121,7 +121,7 @@ static navigationOptions = {
           />
 
           <TextInput
-            value={this.state.password}
+            value={this.state.password_confirmation}
             onChangeText={password_confirmation => this.setState({ password_confirmation })}
             style={styles.input}
             placeholder="Confirm Password"
@@ -129,7 +129,7 @@ static navigationOptions = {
             placeholderTextColor="rgba(255,255,255,0.7)"
             returnKeyType="go"
             secureTextEntry
-            ref={input => (this.passwordInput = input)}
+            ref={input => (this.password_confirmationInput = input)}
           />
         </KeyboardAvoidingView>
 
@@ -184,6 +184,7 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: 18,
     alignSelf: "center",
+    
     textAlign: "center",
     color: "#FFF",
     fontWeight: "700"

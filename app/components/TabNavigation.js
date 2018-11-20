@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 
-import LocationScreen from './LocationScreen';
+// import LocationScreen from './LocationScreen';
 import ProfileScreen from  './ProfileScreen';
 import ListScreen from './ListScreen';
 
@@ -12,7 +12,7 @@ import ListScreen from './ListScreen';
 const TabNav =  TabNavigator(
   {
     Home: { screen: ListScreen },
-    Location: { screen: LocationScreen },
+    // Location: { screen: LocationScreen },
     Profile: { screen: ProfileScreen },
   },
   {
