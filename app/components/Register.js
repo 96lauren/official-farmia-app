@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   TextInput,
   TouchableHighlight,
   Image,
@@ -58,6 +59,7 @@ static navigationOptions = {
   }
   render() {
     return (
+      <ScrollView>
       <View behavior="padding" style={styles.container}>
 
           <View style={styles.logoContainer}>
@@ -140,6 +142,7 @@ static navigationOptions = {
           <Text style={styles.buttonText}>REGISTER </Text>
         </TouchableHighlight>
       </View>
+      </ScrollView>
     );
   }
 }

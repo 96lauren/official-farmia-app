@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Image,
   TouchableOpacity
 } from 'react-native';
@@ -13,6 +14,7 @@ export default class Profile extends Component {
 
   render() {
     return (
+      <ScrollView>
       <View style={styles.container}>
           <View style={styles.header}></View>
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
@@ -23,21 +25,20 @@ export default class Profile extends Component {
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
               
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text style={styles.buttonText} >Opcion 1</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Opcion 2</Text> 
-              </TouchableOpacity>
+                <Text style={styles.buttonText} >new Profile </Text>  
+              </TouchableOpacity>               
+              
             </View>
         </View>
       </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#16a085",
+    backgroundColor: "#FB5A03",
     height:200,
   },
   avatar: {
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     height: 130,
     borderRadius: 63,
     borderWidth: 4,
-    borderColor: "white",
+    borderColor: "#390C0C",
     marginBottom:10,
     alignSelf:'center',
     position: 'absolute',
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   },
   info:{
     fontSize:16,
-    color: "#16a085",
+    color: "#390C0C",
     marginTop:10
   },
   description:{
@@ -92,6 +93,6 @@ const styles = StyleSheet.create({
     marginBottom:20,
     width:250,
     borderRadius:30,
-    backgroundColor: "#16a085",
+    backgroundColor: "#FB5A03",
   },
 });

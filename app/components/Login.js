@@ -7,8 +7,10 @@ import {
   Image,
   TextInput,
   StyleSheet, // CSS-like styles
-  Text, // Renders text
-  View // Container component
+  Text, 
+  ScrollView,// Renders text
+  View,
+   // Container component
 } from "react-native";
 
 import { StackNavigator } from "react-navigation";
@@ -47,6 +49,7 @@ export default class Login extends Component {
   }
   render() {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View behavior="padding" style={styles.container}>
           <View style={styles.logoContainer}>
@@ -109,6 +112,7 @@ export default class Login extends Component {
           </Text>
         </TouchableOpacity>
       </View>
+      </ScrollView>
     );
   }
 }

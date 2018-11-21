@@ -6,7 +6,7 @@ import TabNavigation from './TabNavigation'
 export default class HomeScreen extends Component {
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: "#16a085",
+      backgroundColor: "#390C0C",
       elevation: null,
     },
     headerTitleStyle: {
