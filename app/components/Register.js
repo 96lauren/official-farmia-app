@@ -170,7 +170,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.3)",
     color: "#fff",
     paddingHorizontal: 10,
-    borderRadius:20
+    borderWidth: 0.3,
+    borderColor: "#390C0C"
   },
   button: {
     height: 50,
@@ -179,8 +180,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     justifyContent: "center",
     paddingVertical: 15,
+    borderWidth: 0.3,
     marginBottom: 10,
-    borderRadius:20
+    borderColor: "#390C0C"  
   },
   buttonText: {
     flex: 1,

@@ -149,7 +149,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: "#FB5A03",
     paddingVertical: 15,
-    borderRadius:20
+     borderColor: "#390C0C",
+    borderWidth: 0.5,
   },
   buttonText: {
     textAlign: "center",
@@ -164,7 +165,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginRight:30,
     marginLeft:30,
-    borderRadius:20
+    borderColor: "#390C0C",
+    borderWidth: 0.5,
   },
   input: {
     height: 40,
@@ -172,11 +174,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.3)",
     color: "#fff",
     paddingHorizontal: 10,
-    borderRadius:20
+    borderWidth: 0.5,
+    borderColor: "#390C0C"
   },
-  window: {
-    marginBottom: 15
-  }
+  // window: {
+  //   marginBottom: 10
+  // }
 });
 
 AppRegistry.registerComponent("Login", () => Login);
