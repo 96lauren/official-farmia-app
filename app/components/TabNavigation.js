@@ -5,15 +5,19 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 // import LocationScreen from './LocationScreen';
 import ProfileScreen from  './ProfileScreen';
-import ListScreen from './ListScreen';
-// import ContentScreen from './ContentScreen';
-
+// import ListScreen from './ListScreen';
+import chickenScreen from './chickenScreen';
+import cowScreen from './cowScreen';
+import pigScreen from './pigScreen';
 
 
 const TabNav =  TabNavigator(
   {
-    Home: { screen: ListScreen },
-    // Home: { screen: ContentScreen },
+    // Home: { screen: ListScreen },
+    chicken: { screen: chickenScreen },
+    // Home: { screen: cowScreen },
+    cow:{screen:cowScreen},
+    pig:{screen:pigScreen},
     // Location: { screen: LocationScreen },
     Profile: { screen: ProfileScreen },
   },

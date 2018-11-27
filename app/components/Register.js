@@ -59,7 +59,7 @@ static navigationOptions = {
   }
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor:"#fff"}}>
       <View behavior="padding" style={styles.container}>
 
           <View style={styles.logoContainer}>

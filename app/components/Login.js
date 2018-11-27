@@ -49,7 +49,7 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor:"#fff"}}>
       <View style={styles.container}>
         <View behavior="padding" style={styles.container}>
           <View style={styles.logoContainer}>
@@ -162,8 +162,8 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 10,
     marginTop: 5,
-    marginRight:30,
-    marginLeft:30,
+    marginRight:40,
+    marginLeft:40,
     
    
   },

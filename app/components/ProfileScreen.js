@@ -1,41 +1,73 @@
-
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
   Image,
-  TouchableOpacity
-} from 'react-native';
-
-export default class Profile extends Component { 
-
+  TouchableOpacity,
+  Button,
+  ScrollView
+} from "react-native";
+import ImagePicker from "react-native-image-picker";
+ 
+export default class Profile extends Component {
+  state = {
+    pickedImage: null
+  };
+ 
+  pickImageHandler = () => {
+    ImagePicker.launchImageLibrary(
+      { title: "Pick an Image", maxWidth: 800, maxHeight: 600 },
+      res => {
+        if (res.didCancel) {
+          console.log("User cancelled!");
+        } else if (res.error) {
+          console.log("Error", res.error);
+        } else {
+          this.setState({
+            pickedImage: { uri: res.uri }
+          });
+        }
+      }
+    );
+  };
+ 
+  resetHandler = () => {
+    this.reset();
+  };
+ 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor:"#fff"}}>
       <View style={styles.container}>
-          <View style={styles.header}></View>
-          <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
-          <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              <Text style={styles.name}>John Doe</Text>
-              <Text style={styles.info}>UX Designer / Mobile developer</Text>
-              <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
-              
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text style={styles.buttonText} >new Profile </Text>  
-              </TouchableOpacity>               
-              
-            </View>
+        <View style={styles.header} />
+        <Image style={styles.avatar} source={this.state.pickedImage} />
+        <View style={styles.body}>
+          <View style={styles.bodyContent}>
+            <Text style={styles.name}>John Doe</Text>
+            <Text style={styles.info}>UX Designer / Mobile developer</Text>
+            <Text style={styles.description}>
+              Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum
+              electram expetendis, omittam deseruisse consequuntur ius an,
+            </Text>
+ 
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={this.pickImageHandler}
+            >
+              <Text style={styles.buttonText}>Set Image</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer}>
+              <Text style={styles.buttonText}>Opcion 2</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       </ScrollView>
     );
   }
 }
-
+ 
 const styles = StyleSheet.create({
   header:{
     backgroundColor: "#FB5A03",

@@ -26,7 +26,7 @@ import { StackNavigator } from "react-navigation";
 class Home extends Component<{}> {
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: "#16a085",
+      // backgroundColor: "#16a085",
       elevation: null
     },
     header: null
