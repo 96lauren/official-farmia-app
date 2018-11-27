@@ -6,12 +6,14 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 // import LocationScreen from './LocationScreen';
 import ProfileScreen from  './ProfileScreen';
 import ListScreen from './ListScreen';
+// import ContentScreen from './ContentScreen';
 
 
 
 const TabNav =  TabNavigator(
   {
     Home: { screen: ListScreen },
+    // Home: { screen: ContentScreen },
     // Location: { screen: LocationScreen },
     Profile: { screen: ProfileScreen },
   },

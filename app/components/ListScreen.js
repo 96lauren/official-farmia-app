@@ -74,7 +74,7 @@ export default class ListScreen extends Component {
             style={{
               height: 1,
               width: "86%",
-              backgroundColor: "#CED0CE",
+              backgroundColor: "#FB5A03",
               marginLeft: "14%",
               marginRight: "14%"
             }}
@@ -85,7 +85,7 @@ export default class ListScreen extends Component {
       renderHeader = () => {
         return <SearchBar 
             placeholder="Type Here..." 
-            darkTheme 
+            lightTheme 
             round 
             containerStyle={{
                 borderTopWidth: 0,
