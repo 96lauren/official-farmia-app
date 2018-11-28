@@ -19,7 +19,13 @@ export default class chickenScreen extends Component {
           <View style={styles.header}></View>
     
           <View style={styles.body}>
+
+          <View style={styles.logoContainer}>
+            <Image style={{width: 320, height:180}} source={require("./flogo2.png")} />
+            <Text style={styles.subtext}>FARMIA</Text>
+          </View>
             <View style={styles.bodyContent}>
+
     
               
               <Text style={styles.description}>will your chickne be healthy use farmia to ensure that </Text>

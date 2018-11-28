@@ -57,9 +57,7 @@ export default class Profile extends Component {
             >
               <Text style={styles.buttonText}>Set Image</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Opcion 2</Text>
-            </TouchableOpacity>
+            
           </View>
         </View>
       </View>
